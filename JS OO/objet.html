@@ -1,0 +1,78 @@
+<html>
+    <head>
+    
+        <meta charset = "utf-8" />
+    
+    </head>
+
+    <body>
+    
+        <input type = "button" value = "Tour suivant" onclick = "tour_suivant()" />
+        
+    </body>
+    
+    <script>
+        
+
+        function Personne(le_nom , le_prenom , attk = 10) { // Constructeur, cad la fonction à appeler pour créer un nouvel exemplaire de l'objet "Personne"
+            this.nom = le_nom;
+            this.prenom = le_prenom;
+            this.attaque = attk;
+            this.life = 100; // Par défaut
+            this.est_en_vie = true;
+            
+            this.dire_prenom = function() {
+                alert("Je m'appelle " + this.prenom);
+            }
+            
+            this.subir_degats = function(ennemi) {
+                
+                var degats = ennemi.attaque;
+                
+                this.life -= degats; // this.life = this.life - degats
+                
+                
+                
+                if (this.life <= 0) {
+                    this.est_en_vie = false;
+                    alert(this.prenom + " †††");
+                } else {
+                    alert("Il reste " + this.life + " points de vie à " + this.prenom);
+                }
+                
+            }
+            
+            this.attaquer = function(ennemi) {
+                
+                ennemi.subir_degats(this);
+                
+            }
+            
+            
+            
+        }
+
+        var personne1 = new Personne('Auer' , 'Pascal');
+        var personne2 = new Personne('Wali' , 'Khahmhel');
+        
+        
+        
+        function tour_suivant() {
+            
+            var rand_n = Math.round(Math.random()); // 0 ou 1
+            
+            //rand_n == 0 ? personne1.attaquer(personne2) : personne2.attaquer(personne1);
+            
+            if (rand_n == 0) {
+                personne1.attaquer(personne2);
+            } else {
+                personne2.attaquer(personne1);
+            }
+            
+        }
+        
+
+    
+    </script>
+    
+</html>

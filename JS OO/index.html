@@ -1,0 +1,123 @@
+<html>
+    <head>
+    
+        <meta charset = "utf-8" />
+        
+        <style>
+        
+            .square {
+                width:300px; height:300px; border:1px solid black;
+            }
+        
+        </style>
+    
+    </head>
+
+    <body>
+    
+        <div id = "square_1" class = "square"></div>
+        
+        <div id = "square_2" class = "square"></div>
+        
+        <div id = "square_3" class = "square"></div>
+        
+        <div id = "square_4" class = "square"></div>
+        
+    </body>
+    
+    <script>
+        
+        var squares_list = document.getElementsByClassName("square");
+        
+        
+        for (var i = 0; i < squares_list.length; i++) {
+            
+            var square_object = squares_list[i]; // L'objet (dans notre liste) auquel on va donner des propriétés et des méthodes
+            
+            // Préparation de l'objet
+            
+            square_object.code_couleur = "#808080";
+            // "code_couleur" = clé / "#808080" = valeur / l'ensemble est une propriété
+            square_object.nom_couleur = "gris";
+            
+            square_object.dimension = 100;
+            
+            // À ce stade, les propriétés sont définies, il reste à les utiliser.
+            
+            
+            square_object.changer_couleur = function(code_c , nom_c) {
+                
+            //MAJ des variables
+            this.code_couleur = code_c;
+            this.nom_couleur = nom_c;
+            alert("la couleur a été changée en " + this.nom_couleur);
+            
+            // + diverses manips possibles concernant le changement de couleur
+                
+            }
+            
+            square_object.changer_dimension = function(dim) {
+                
+            //MAJ
+            this.dimension = dim;
+                
+            }
+            
+            square_object.appliquer_couleur = function() {
+                
+            //Application de la modif sur le HTML, en fonction de la valeur en place pour square_object.code_couleur
+            this.style.backgroundColor = this.code_couleur;
+                
+            }
+            
+            square_object.appliquer_dimension = function() {
+                
+            //Application de la modif sur le HTML, en fonction de la valeur en place pour square_object.dimension
+            this.style.width = this.dimension + "px";
+            this.style.height = this.dimension + "px";
+                
+            }
+            
+            
+        }
+        
+        // Mise en oeuvre des objets
+        
+        document.getElementById("square_4").changer_couleur("yellow", "jaune");
+        
+        document.getElementById("square_4").appliquer_couleur(); // Appliquera la propriété par défaut - gris
+        
+        document.getElementById("square_3").appliquer_dimension();
+        
+        
+        
+        
+        
+//        var code_couleur , nom_couleur;
+//        
+//        function changer_couleur(elem , code_c , nom_c) {
+//            
+//            // MAJ des variables
+//            code_couleur = code_c;
+//            nom_couleur = nom_c;
+//            
+//            // Application de la modif sur l'élément HTML
+//            elem.style.backgroundColor = code_c;
+//            
+//            //afficher_infos();
+//            
+//        }
+//        
+//        function afficher_infos() {
+//            
+//            var message = "La couleur du carré est " + nom_couleur;
+//            
+//            document.getElementById("infos").innerHTML = message;
+//            
+//            document.getElementById("infos").style.color = code_couleur;
+//            
+//        }
+    
+    </script>
+    
+</html>
